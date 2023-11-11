@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+use App\Http\Controllers\StudentController;
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::apiResource('students', StudentController::class);
+    Route::post('students/search', [StudentController::class, 'search']);
+    Route::post('students/import', [StudentController::class, 'import']);
 });
+

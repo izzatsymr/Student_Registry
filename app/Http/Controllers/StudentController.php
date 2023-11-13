@@ -28,7 +28,7 @@ class StudentController extends Controller
         $query = $request->input('query');
         $students = Student::where('name', 'like', "%$query%")
             ->orWhere('email', 'like', "%$query%")
-            ->get();
+            ->paginate(10);
 
         return StudentResource::collection($students);
     }
@@ -76,6 +76,7 @@ class StudentController extends Controller
 
         return response()->json(null, 204);
     }
+
 
     public function import(Request $request)
     {

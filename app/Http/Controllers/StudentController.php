@@ -47,7 +47,10 @@ class StudentController extends Controller
         }
 
         $student = Student::create($request->all());
-        return new StudentResource($student);
+        return response()->json([
+            'message' => 'Student created successfully',
+            'data' => new StudentResource($student),
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -66,7 +69,10 @@ class StudentController extends Controller
         }
 
         $student->update($request->all());
-        return new StudentResource($student);
+        return response()->json([
+            'message' => 'Student updated successfully',
+            'data' => new StudentResource($student),
+        ]);
     }
 
     public function destroy($id)
@@ -74,7 +80,9 @@ class StudentController extends Controller
         $student = Student::findOrFail($id);
         $student->delete();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'message' => 'Student deleted successfully',
+        ]);
     }
 
     public function import(Request $request)

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,9 +23,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('students', [StudentController::class, 'store']);
     Route::put('students/{id}', [StudentController::class, 'update']);
     Route::delete('students/{id}', [StudentController::class, 'destroy']);
+    Route::post('students/import', [StudentController::class, 'import']);
 });
 
+Route::post('register', [UserController::class, 'userRegister']);
+Route::post('login', [UserController::class, 'userLogin']);
 
-Route::post('login',[UserController::class,'userLogin']);
-
-Route::get('profile-details',[UserController::class,'userDetails']);
+Route::get('profile-details', [UserController::class, 'userDetails']);

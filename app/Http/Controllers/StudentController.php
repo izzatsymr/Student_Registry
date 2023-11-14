@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StudentsImport;
@@ -76,7 +76,6 @@ class StudentController extends Controller
 
         return response()->json(null, 204);
     }
-
 
     public function import(Request $request)
     {

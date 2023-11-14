@@ -15,12 +15,7 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['middleware' => 'auth:api'], function () {
-    // Routes requiring authentication
     Route::get('students', [StudentController::class, 'index']);
     Route::get('students/{id}', [StudentController::class, 'show']);
     Route::post('students/search', [StudentController::class, 'search']);

@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::delete('students/{id}', [StudentController::class, 'destroy']);
 });
 
+
 Route::post('login',[UserController::class,'userLogin']);
 
 Route::get('profile-details',[UserController::class,'userDetails']);

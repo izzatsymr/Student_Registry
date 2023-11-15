@@ -33,7 +33,7 @@ class StudentsImport implements ToModel, WithHeadingRow
                     ]);
                 }
 
-                return null; // Do not create a new model for updates
+                return null;
 
             case 'delete':
                 $studentToDelete = Student::find($row['id']);
@@ -42,10 +42,10 @@ class StudentsImport implements ToModel, WithHeadingRow
                     $studentToDelete->delete();
                 }
 
-                return null; // Do not create a new model for deletions
+                return null;
 
             default:
-                return null; // Invalid action, do nothing
+                return null;
         }
     }
 }
